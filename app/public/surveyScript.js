@@ -11,6 +11,6 @@ $('.custom-select').on('click', function(event)
 
 	else
 	{
-		$('#'+id).addClass('bg-success')	
+		$('#'+id).addClass('bg-success')
 	}
 });
