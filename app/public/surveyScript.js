@@ -31,7 +31,20 @@ $('#submit').on('click', function(event)
 
 	if ($('#name-input').val() && $('#photo-input').val()  && !isNaN(sum))
 	{
-		console.log("Yes");
+		var newFriend = 
+		{
+			name: $('#name-input').val(),
+			photo: $('#photo-input').val(),
+			scores: answers
+		}
+
+		$.post("/api/friends", newFriend)
+		.done( function(err, data)
+		{
+			if(err){throw err}
+
+			console.log(data)
+		})
 	}
 
 	else
