@@ -39,10 +39,8 @@ $('#submit').on('click', function(event)
 		}
 
 		$.post("/api/friends", newFriend)
-		.done( function(err, data)
+		.done( function(data)
 		{
-			if(err){throw err}
-
 			console.log(data)
 		})
 	}

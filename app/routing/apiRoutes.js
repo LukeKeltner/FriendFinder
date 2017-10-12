@@ -11,13 +11,16 @@ router.get("/api/friends", function(req, res)
 router.post("/api/friends", function(req, res)
 {
 	var newFriend = req.body
-	friends.push(newFriend)
-	res.json(newFriend)
 
 	for (var i=0; i<friends.length; i++)
 	{
 		console.log(friends[i].name)
 	}
+
+
+	//So user can match with themselves!
+	friends.push(newFriend)
+	res.json(newFriend)
 })
 
 module.exports = router;
