@@ -24,6 +24,13 @@ $('.custom-select').on('click', function(event)
 
 $('#submit').on('click', function(event)
 {
+	answers = []
+
+	for (var i=0; i<10; i++)
+	{
+		answers.push(parseInt($('#'+i+'-answer').val().substring(0,1)))
+	}
+/*
 	var ans1 = parseInt($('#1-answer').val().substring(0,1))
 	var ans2 = parseInt($('#2-answer').val().substring(0,1))
 	var ans3 = parseInt($('#3-answer').val().substring(0,1))
@@ -33,13 +40,26 @@ $('#submit').on('click', function(event)
 	var ans7 = parseInt($('#7-answer').val().substring(0,1))
 	var ans8 = parseInt($('#8-answer').val().substring(0,1))
 	var ans9 = parseInt($('#9-answer').val().substring(0,1))
-	var ans10 = parseInt($('#0-answer').val().substring(0,1))
+	var ans10 = parseInt($('#0-answer').val().substring(0,1))*/
 
-	sum = ans1 + ans2 + ans3 + ans4 + ans5 + ans6 + ans7 + ans8 + ans9 + ans10
+	sum = 0
 
-	if (isNaN(sum))
+	for (var i=0; i<answers.length; i++)
 	{
-		alert("Please answer all the questions.")
+		sum = sum + answers[i]
+	}
+
+	console.log(sum)
+
+
+	if($('#name-input').val() && $('#photo-input').val()  && !isNaN(sum))
+	{
+		console.log("Yes");
+	}
+
+	else
+	{
+		alert("Please fill out the entire survey.")
 	}
 
 })
