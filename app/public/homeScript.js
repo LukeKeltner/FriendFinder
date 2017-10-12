@@ -1,4 +1,4 @@
-$('#take-survey').on('click', function(event)
+/*$('#take-survey').on('click', function(event)
 {
-	window.location.href = 'survey.html';
-})
+	window.location.href = 'survey';
+})*/
