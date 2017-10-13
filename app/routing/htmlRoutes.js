@@ -6,7 +6,6 @@ var router = express.Router()
 router.get("/:location?", function(req, res)
 {
 	var chosen = req.params.location;
-	console.log(chosen)
 	
 	if (chosen === "survey")
 	{

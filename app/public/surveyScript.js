@@ -1,11 +1,6 @@
 
-
-picVerified = false;
-
-
-
-//myPicture.onError = errorHandler();
-
+var picVerified = false;
+var pic = "";
 
 $('#verify').on('click', function(event)
 {
@@ -16,6 +11,7 @@ $('#verify').on('click', function(event)
 	$('#verify').html("Looks Good!")
 
 	$('#verify-pic').attr("src", $('#photo-input').val())
+	pic = $('#photo-input').val()
 	$('#verify-pic').on("error", function()
 	{
 		$('#verify-pic').attr("src", 'https://t4.ftcdn.net/jpg/01/02/43/95/240_F_102439515_sPOWQt2qQ3JKT9auGuOJxAY0Lu0tjDHR.jpg')
@@ -34,13 +30,27 @@ $('.custom-select').on('click', function(event)
 
 	if (res === "Answer")
 	{
-		$('#'+id).css('background-color', 'white')
+		$('#'+id).css('border', '1px solid rgba(0,0,0,.125)')
+/*		$('#'+id).css('background-color', 'white')
+		$('#'+id).css('color', 'black')*/
 	}
 
 	else
 	{
-		$('#'+id).css('background-color', '#a7ffa3')
+		$('#'+id).css('border', '3px solid #28a745')
+/*		$('#'+id).css('background-color', '#28a745')
+		$('#'+id).css('color', 'white')*/
 	}
+
+/*	if (res === "Answer")
+	{
+		$('#'+id).hide()
+	}
+
+	else
+	{
+		$('#'+id).show()
+	}*/
 });
 
 $('#submit').on('click', function(event)
@@ -63,7 +73,7 @@ $('#submit').on('click', function(event)
 		var newFriend = 
 		{
 			name: $('#name-input').val(),
-			photo: $('#photo-input').val(),
+			photo: pic,
 			scores: answers
 		}
 
