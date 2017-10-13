@@ -30,27 +30,17 @@ $('.custom-select').on('click', function(event)
 
 	if (res === "Answer")
 	{
-		$('#'+id).css('border', '1px solid rgba(0,0,0,.125)')
-/*		$('#'+id).css('background-color', 'white')
-		$('#'+id).css('color', 'black')*/
+		//$('#'+id).css('border', '0.1px solid rgba(0,0,0,.125)')
+		$('#'+id).css('background-color', 'white')
+		$('#'+id).css('color', 'black')
 	}
 
 	else
 	{
-		$('#'+id).css('border', '3px solid #28a745')
-/*		$('#'+id).css('background-color', '#28a745')
-		$('#'+id).css('color', 'white')*/
+		//$('#'+id).css('border', '3px solid #28a745')
+		$('#'+id).css('background-color', '#28a745')
+		$('#'+id).css('color', 'white')
 	}
-
-/*	if (res === "Answer")
-	{
-		$('#'+id).hide()
-	}
-
-	else
-	{
-		$('#'+id).show()
-	}*/
 });
 
 $('#submit').on('click', function(event)

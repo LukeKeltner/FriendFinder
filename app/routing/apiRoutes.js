@@ -4,7 +4,6 @@ var fs = require('fs-extra')
 var friendsPath = path.join(__dirname, "..", "data", "friends.json")
 
 var router = express.Router()
-var friends = require(path.join(__dirname, "..", "data", "friends.js"))
 
 router.get("/api/friends", function(req, res)
 {
