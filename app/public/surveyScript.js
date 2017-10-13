@@ -42,6 +42,9 @@ $('#submit').on('click', function(event)
 		.done(function(data)
 		{
 			console.log(data)
+			$('#friend-modal').modal('show')
+			$('#match-name').html(data.name)
+			$('#match-img').attr('src', data.photo)
 		})
 	}
 

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/LukeKeltner/FriendFinder#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "fs-extra": "^4.0.2"
   }
 }
