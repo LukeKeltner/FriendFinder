@@ -17,13 +17,6 @@ app.use(express.static(path.join(__dirname, "app", "public")));
 app.use("", htmlRoutes)
 app.use("", apiRoutes)
 
-var friends = [
-{
-	name: "Luke",
-	photo: "testphoto.jpeg",
-	scores: [1,1,1,1,1,1,1,1,1,1]
-}]
-
 
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
