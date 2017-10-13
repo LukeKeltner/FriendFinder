@@ -1,3 +1,32 @@
+
+
+picVerified = false;
+
+
+
+//myPicture.onError = errorHandler();
+
+
+$('#verify').on('click', function(event)
+{
+	picVerified = true;
+	$('#verify').removeClass('btn-danger')
+	$('#verify').removeClass('btn-success')
+	$('#verify').addClass('btn-success')
+	$('#verify').html("Looks Good!")
+
+	$('#verify-pic').attr("src", $('#photo-input').val())
+	$('#verify-pic').on("error", function()
+	{
+		$('#verify-pic').attr("src", 'https://t4.ftcdn.net/jpg/01/02/43/95/240_F_102439515_sPOWQt2qQ3JKT9auGuOJxAY0Lu0tjDHR.jpg')
+		$('#verify').removeClass('btn-primary')
+		$('#verify').removeClass('btn-success')
+		$('#verify').addClass('btn-danger')
+		$('#verify').html("Try Again!")
+		picVerified = false;
+	})
+})
+
 $('.custom-select').on('click', function(event)
 {
 	var res = $(this).find("option:selected").text().substring(0, 6);
@@ -5,12 +34,12 @@ $('.custom-select').on('click', function(event)
 
 	if (res === "Answer")
 	{
-		$('#'+id).removeClass('bg-success')
+		$('#'+id).css('background-color', 'white')
 	}
 
 	else
 	{
-		$('#'+id).addClass('bg-success')
+		$('#'+id).css('background-color', '#a7ffa3')
 	}
 });
 
@@ -29,7 +58,7 @@ $('#submit').on('click', function(event)
 		sum = sum + answers[i]
 	}
 
-	if ($('#name-input').val() && $('#photo-input').val()  && !isNaN(sum))
+	if ($('#name-input').val() && $('#photo-input').val()  && !isNaN(sum) && picVerified)
 	{
 		var newFriend = 
 		{
@@ -50,6 +79,13 @@ $('#submit').on('click', function(event)
 
 	else
 	{
-		alert("Please fill out the entire survey.")
+		$('#incomplete-survey').modal('show')
+		$('#what-to-finish').html("")
+		$('#what-to-finish').html("Please complete the entire survey.")
+
+		if (!picVerified)
+		{
+			$('#what-to-finish').append("<br>Please verify your picture.")
+		}
 	}
 })

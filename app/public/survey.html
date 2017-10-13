@@ -15,18 +15,20 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md-1">
-			</div>
-			<div class="col-md-10">
+			<div class="col-md-8">
 				<div class="form-group">
 					<h2>About You</h2>
 					<label for="name-input">Name (Required)</label>
 					<input type="name" class="form-control" id="name-input" aria-describedby="emailHelp" placeholder="Enter your name!">
 					<label for="photo-input">Link to Photo (Required)</label>
-					<input type="name" class="form-control" id="photo-input" aria-describedby="emailHelp" placeholder="Enter a link!">
+					<span class="input-group-btn">
+						<input type="name" class="form-control" id="photo-input" aria-describedby="emailHelp" placeholder="Enter a link!  You should be able to see your pic to the right when you hit Verify!">
+			        	<button class="btn btn-primary" type="button" id="verify">Verify!</button>
+			      	</span>
 				</div>
 			</div>
-			<div class="col-md-1">
+			<div class="col-md-4">
+				<img src="#" id="verify-pic"/>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
@@ -244,6 +246,9 @@
 				</div>
 			</div>
 
+			<hr>
+			<a href="/api/friends">API Friends List</a> | <a href="https://github.com/LukeKeltner/FriendFinder">GitHub Repo</a>
+
 	</div>
 
 
@@ -267,6 +272,25 @@
 	    </div>
 	  </div>
 	</div>		
+
+	<div class="modal" id="incomplete-survey">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Ut oh...</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <h3 id="what-to-finish"></h3>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Okay, I'll finish it!</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>	
 
 
 
