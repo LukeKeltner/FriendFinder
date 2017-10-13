@@ -13,7 +13,6 @@ router.post("/api/friends", function(req, res)
 	var newFriend = req.body
 	var closestMatchIndex = 0;
 	var closestMatchScore = 100;
-	var relativeScores = []
 
 	for (var i=0; i<friends.length; i++)
 	{
@@ -21,7 +20,7 @@ router.post("/api/friends", function(req, res)
 
 		for (var j=0; j<newFriend.scores.length; j++)
 		{
-				relativeScore =  relativeScore + Math.abs(newFriend.scores[j] - friends[i].scores[j]);
+			relativeScore =  relativeScore + Math.abs(newFriend.scores[j] - friends[i].scores[j]);
 		}
 
 		if (relativeScore < closestMatchScore)
@@ -31,12 +30,10 @@ router.post("/api/friends", function(req, res)
 		}
 	}
 
-	console.log(relativeScores)
 	console.log("Your closest match is "+friends[closestMatchIndex].name)
 
-	//So user can't match with themselves!
 	friends.push(newFriend)
-	res.json(newFriend)
+	res.json(friends[closestMatchIndex])
 })
 
 module.exports = router;

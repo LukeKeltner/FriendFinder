@@ -39,7 +39,7 @@ $('#submit').on('click', function(event)
 		}
 
 		$.post("/api/friends", newFriend)
-		.done( function(data)
+		.done(function(data)
 		{
 			console.log(data)
 		})
