@@ -1,8 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-var htmlRoutes = require(path.join(__dirname, "app", "routing", "htmlRoutes.js"))
-var apiRoutes = require(path.join(__dirname, "app", "routing", "apiRoutes.js"))
+var htmlRoutes = require(path.join(__dirname, "app", "routing", "htmlRoutes.js"));
+var apiRoutes = require(path.join(__dirname, "app", "routing", "apiRoutes.js"));
 
 
 var app = express();
@@ -14,8 +14,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static(path.join(__dirname, "app", "public")));
 
-app.use("", htmlRoutes)
-app.use("", apiRoutes)
+app.use("", htmlRoutes);
+app.use("", apiRoutes);
 
 
 app.listen(PORT, function() {

@@ -1,20 +1,20 @@
 var express = require("express");
 var path = require("path");
-var fs = require('fs-extra')
-var friendsPath = path.join(__dirname, "..", "data", "friends.json")
+var fs = require('fs-extra');
+var friendsPath = path.join(__dirname, "..", "data", "friends.json");
 
-var router = express.Router()
+var router = express.Router();
 
 router.get("/api/friends", function(req, res)
 {
 	fs.readJson(friendsPath)
 	.then(function(friends)
 	{
-		res.json(friends)
+		res.json(friends);
 	})
 	.catch(function(err)
 	{
-		console.log(err)
+		console.log(err);
 	})
 })
 
@@ -23,13 +23,13 @@ router.post("/api/friends", function(req, res)
 	fs.readJson(friendsPath)
 	.then(function(friends)
 	{
-		var newFriend = req.body
+		var newFriend = req.body;
 		var closestMatchIndex = 0;
 		var closestMatchScore = 100;
 
 		for (var i=0; i<friends.length; i++)
 		{
-			relativeScore = 0
+			relativeScore = 0;
 
 			for (var j=0; j<newFriend.scores.length; j++)
 			{
@@ -43,14 +43,14 @@ router.post("/api/friends", function(req, res)
 			}
 		}
 
-		console.log("Your closest match is "+friends[closestMatchIndex].name)
-		friends.push(newFriend)
-		fs.writeJson(friendsPath, friends)
-		res.json(friends[closestMatchIndex])
+		console.log("Your closest match is "+friends[closestMatchIndex].name);
+		friends.push(newFriend);
+		fs.writeJson(friendsPath, friends);
+		res.json(friends[closestMatchIndex]);
 	})
 	.catch(function(err)
 	{
-		console.error(err)
+		console.error(err);
 	})
 })
 
