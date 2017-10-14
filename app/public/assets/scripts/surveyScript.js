@@ -1,6 +1,47 @@
-
 var picVerified = false;
 var pic = "";
+var questionBank;
+
+//Doing this has made me apprecaite handlebars I think :)
+var buildQuestions = function(i, text)
+{
+	var questionNumber = i+1
+	var htmlDumpsterFire = $(
+	'<div class="row">'
+		+'<div class="col-md-12">'
+			+'<div class="card" id="'+i+'">'
+				+'<div class="card-body">'
+					+'<h3 class="card-title">Question '+questionNumber+'</h3>'
+					+'<div id="question-text">'
+						+''+text+''
+					+'</div>'
+
+					+'<select class="custom-select mb-2 mr-sm-2 mb-sm-0 pull-right" id="'+i+'-answer">'
+						+'<option selected>Answer to #'+questionNumber+'</option>'
+						+'<option value="1" class="test">1 (Stronly Disagree)</option>'
+						+'<option value="2" class="test">2</option>'
+						+'<option value="3" class="test">3</option>'
+						+'<option value="4" class="test">4</option>'
+						+'<option value="5" class="test">5 (Strongly Agree)</option>'
+					+'</select>'
+				+'</div>'
+			+'</div>'
+		+'</div>'
+	+'</div>')
+
+	$('#question-container').append(htmlDumpsterFire)
+}
+
+$.get('/api/questions', function(data)
+{
+	questionBank = data;
+
+	for (var i=0; i<questionBank.length; i++)
+	{
+		buildQuestions(i, questionBank[i].question)
+	}
+
+})
 
 $('#verify').on('click', function(event)
 {
@@ -23,7 +64,7 @@ $('#verify').on('click', function(event)
 	})
 })
 
-$('.custom-select').on('click', function(event)
+$(document).on('click', '.custom-select', function(event)
 {
 	var res = $(this).find("option:selected").text().substring(0, 6);
 	var id = $(this).attr('id').substring(0,1);
@@ -46,19 +87,19 @@ $('.custom-select').on('click', function(event)
 $('#submit').on('click', function(event)
 {
 	answers = [];
-	sum = 0;
+	//sum = 0;
 
 	for (var i=0; i<10; i++)
 	{
 		answers.push(parseInt($('#'+i+'-answer').val().substring(0,1)));
 	}
 
-	for (var i=0; i<answers.length; i++)
+	var sum = answers.reduce(function(sum, num)
 	{
-		sum = sum + answers[i];
-	}
+		return sum + num;
+	})
 
-	if ($('#name-input').val() && $('#photo-input').val()  && !isNaN(sum) && picVerified)
+	if ($('#name-input').val() && !isNaN(sum) && picVerified)
 	{
 		var newFriend = 
 		{

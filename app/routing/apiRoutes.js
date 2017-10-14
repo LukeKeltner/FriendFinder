@@ -2,8 +2,23 @@ var express = require("express");
 var path = require("path");
 var fs = require('fs-extra');
 var friendsPath = path.join(__dirname, "..", "data", "friends.json");
+var questionsPath = path.join(__dirname, "..", "data", "questions.json");
 
 var router = express.Router();
+
+router.get("/api/questions", function(req, res)
+{
+	fs.readJson(questionsPath)
+	.then(function(questions)
+	{
+		console.log(questions)
+		res.json(questions);
+	})
+	.catch(function(err)
+	{
+		console.log(err);
+	})
+})
 
 router.get("/api/friends", function(req, res)
 {
