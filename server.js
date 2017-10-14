@@ -4,7 +4,6 @@ var path = require("path");
 var htmlRoutes = require(path.join(__dirname, "app", "routing", "htmlRoutes.js"));
 var apiRoutes = require(path.join(__dirname, "app", "routing", "apiRoutes.js"));
 
-
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -18,6 +17,7 @@ app.use("", htmlRoutes);
 app.use("", apiRoutes);
 
 
-app.listen(PORT, function() {
+app.listen(PORT, function()
+{
   console.log("App listening on PORT " + PORT);
 });
